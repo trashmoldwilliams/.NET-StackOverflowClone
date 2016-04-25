@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@using System.Security.Claims*@
+@model IEnumerable<StackOverflow.Models.Question>
+
+<h2>Welcome To The Question/Answer Project</h2>
+<hr />
+
+@if (Model.Any())
+{
+    <ul>
+        @foreach (var listItem in Model)
+        {
+            <li>@Html.DisplayFor(modelItem => listItem.Body) | @Html.ActionLink("Details", "Details", new { id = listItem.Id })</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No questiong have been asked yet!</p>
+}

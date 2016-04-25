@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Security.Claims
+@model IEnumerable<StackOverflow.Models.Question>
+
+<h2>Here is your list of questions, @User.GetUserName()</h2>
+<hr />
+
+@if (Model.Any())
+{
+    <ul>
+        @foreach (var listItem in Model)
+        {
+            <li>@Html.DisplayFor(modelItem => listItem.Body)</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No questions have been added yet!</p>
+}
+@Html.ActionLink("Create new", "Create")

@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<StackOverflow.Models.Question>
+
+<h1>Specific Question Page</h1>
+@foreach (var question in Model)
+{
+    @Html.DisplayFor(x => question.Body);
+    @*<p>@Html.ActionLink("Answer Question", "Create", "Answer", new { id = question.Id })</p>*@
+    <p>@Html.ActionLink("Answer Question", "Create", "Answer")</p>
+
+    @foreach (var answer in question.Answers)
+        {
+            <p>@Html.DisplayFor( x => answer.AnswerBody)</p>
+        }
+}
+
+
